@@ -1,0 +1,35 @@
+{
+    "name": "salo-man/laravel-madeline-salo-2",
+    "description": "A third party Telegram client library danog/MadelineProto wrapper for Laravel",
+    "type": "library",
+    "license": "AGPL-3.0-only",
+    "authors": [
+        {
+            "name": "Setiawan Hu",
+            "email": "setiawanhu@gmail.com"
+        }
+    ],
+    "keywords": [
+        "laravel",
+        "telegram",
+        "madeline-proto"
+    ],
+    "require": {
+        "danog/madelineproto": "^7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hu\\MadelineProto\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hu\\MadelineProto\\MadelineProtoServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "phabel/phabel": "^1.0"
+    }
+}
