@@ -3,6 +3,8 @@
 namespace Hu\MadelineProto\Factories;
 
 use danog\MadelineProto\API;
+use danog\MadelineProto\Logger;
+use danog\MadelineProto\Settings;
 use Hu\MadelineProto\MadelineProto;
 use Illuminate\Database\Connection;
 use Illuminate\Database\DatabaseManager;
@@ -69,8 +71,13 @@ class MadelineProtoFactory
         if (is_null($config)) {
             $config = config('telegram.settings');
         }
+        $settings = new Settings;
+        $settings->getLogger()->setLevel(Logger::LEVEL_ULTRA_VERBOSE)->setExtra($config['logger']['logger_param']);
+        $settings->getAppInfo()->setApiId($config['app_info']['api_id']);
+        $settings->getAppInfo()->setApiHash($config['app_info']['api_hash']);
+        $settings->getAppInfo()->setDeviceModel('Telergam');
 
-        $client = new API(storage_path("app/telegram/$sessionFile"), $config);
+        $client = new API(storage_path("app/telegram/$sessionFile"), $settings);
 
         return new MadelineProto($client);
     }
