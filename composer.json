@@ -15,7 +15,7 @@
         "madeline-proto"
     ],
     "require": {
-        "danog/madelineproto": "8.0.1"
+        "danog/madelineproto": "^8.2"
     },
     "autoload": {
         "psr-4": {
